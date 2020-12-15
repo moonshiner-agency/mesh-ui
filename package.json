@@ -6,7 +6,7 @@
     "ng": "ng",
     "start-original": "ng serve",
     "start": "ng serve --verbose --proxy-config proxy.conf.json --live-reload true",
-    "build": "ng build --prod",
+    "build": "ng build --prod && cp -R dist ../uniqa3/uniqa3-frontend/public/cms",
     "generate-models": "node config/build-models-from-raml",
     "test": "ng test --tsConfig=tsconfig.json",
     "test-ci": "ng test --tsConfig=tsconfig.json --watch=false --browsers DockerChromeHeadless --reporters junit",

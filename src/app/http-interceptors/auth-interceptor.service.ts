@@ -50,11 +50,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let headers = req.headers.set('Anonymous-Authentication', 'disable');
-
         // we add token for ping access
-        const token = localStorage.getItem('token')!.replace(/['"]+/g, '');
+        const token = localStorage.getItem('token');
         if (token) {
-            headers = headers.set('Authorization', `Bearer ${token}`);
+            headers = headers.set('Authorization', `Bearer ${token.replace(/['"]+/g, '')}`);
         }
         const newReq = req.clone({
             headers: headers,
